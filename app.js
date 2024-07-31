@@ -17,16 +17,18 @@ app.set('view engine', 'ejs');
 //database connection
 const db = 'mongodb+srv://shanaBiot:Zno8V9dgczXjVQAc@cluster0.scfypel.mongodb.net/job-apply';
 mongoose.connect(db)
-    .then((result) => app.listen(3000))
+    .then((result) => app.listen(3000, () =>{
+        console.log(`You're listening to port 3000`)
+    }))
     .catch((err)=> console.log(err));
 
 
 //routes
 app.get('*', checkUser);
 app.get('/', (req, res)=> res.render('home'));
-//app.get('/profil', requireAuth, (req, res) => res.render('profil'));
-//app.get('/createJob', requireAuth, (req, res) => res.render('createJob'));
-//app.get('/job', requireAuth, (req, res) => res.render('job'));
+app.get('/profil', requireAuth, (req, res) => res.render('profil'));
+app.get('/createJob', requireAuth, (req, res) => res.render('createJob'));
+app.get('/job', requireAuth, (req, res) => res.render('job'));
 app.use(authRoutes);
 
 
