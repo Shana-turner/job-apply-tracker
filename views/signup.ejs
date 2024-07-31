@@ -1,1 +1,76 @@
-<h1>signup</h1>
+<%- include('partials/headerLS'); -%>
+
+
+<form>
+
+    <label for="firstname">First name</label>
+    <input type="text" name="firstname" required>
+    <div class="firstname error"></div>
+
+    <label for="lastname">Last name</label>
+    <input type="text" name="lastname" required>
+    <div class="lastname error"></div>
+
+    <label for="email">Email</label>
+    <input type="text" name="email" required>
+    <div class="email error"></div>
+
+    <label for="gitHub">GitHub</label>
+    <input type="text" name="gitHub">
+    <div class="gitHub error"></div>
+
+    <label for="password">Password</label>
+    <input type="password" name="password" required>
+    <div class="password error"></div>
+
+    <label for="repeatPassword">Confirm password</label>
+    <input type="password" name="repeatPassword" required>
+    <div class="repeatPassword error"></div>
+
+    <button>Sign up</button>
+</form>
+
+<script>
+    const form = document.querySelector('form');
+    const emailError = document.querySelector('.email.error')
+    const passwordError = document.querySelector('.password.error')
+    
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Reset values
+        emailError.textContent = ''
+        passwordError.textContent = ''
+
+        // Get values
+        const firstname = form.firstname.value;
+        const lastname = form.lastname.value;
+        const email = form.email.value;
+        const gitHub = form.gitHub.value;
+        const password = form.password.value;
+
+        try{
+            const res = await fetch('/signup', {
+                method: 'POST',
+                body: JSON.stringify({ firstname, lastname, email, gitHub, password }),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            const data = await res.json()
+            console.log(data)
+            if (data.errors) {
+                emailError.textContent = data.errors.email
+                passwordError.textContent = data.errors.password
+            }
+            if (data.user) {
+                location.assign('/')
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+    })
+</script>
+
+</body>
+</html>

@@ -31,17 +31,6 @@ const userSchema = new mongoose.Schema({
         type : String,
         required: [true, 'Please enter a password'],
         minLength: [6, "Minimum password length is 6 characters"]
-    },
-    repeatPassword : {
-        type : String,
-        required: [true, 'Please repeat the password'],
-        minLength: 6, 
-        validate : {
-            validator : function(value){
-                return value === this.password;
-            },
-            message : "The password is not the same"
-        }
     }
 });
 
@@ -55,13 +44,6 @@ userSchema.post('save', function(doc, next){
 userSchema.pre('save', async function(next){
     const salt = await bcrypt.genSalt();
     this.password = await bcrypt.hash(this.password, salt);
-    this.repeatPassword = await bcrypt.hash(this.repeatPassword, salt);
-    next();
-});
-
-//don't save repeat password
-userSchema.pre('save', function(next) {
-    this.repeatPassword = undefined;
     next();
 });
 
