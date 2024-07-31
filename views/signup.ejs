@@ -1,34 +1,57 @@
 <%- include('partials/headerLS'); -%>
 
+<div class="containerSignup">
+    <!-- <img src="images/leftpic.jpg" alt="pink stuff" class="signupImage"> -->
+<div class="formSignup">
+    <h1>Sign up</h1>
+    <form>
+    <ul>
+        <li>
+            <div class="firstnameS">
+                <label for="firstname">First name</label>
+                <input id="firstnameInput" type="text" name="firstname" required>
+                <div class="firstname error"></div>
+            </div>
+        </li>
+    
+        <li>
+            <div class="lastnameS">
+                <label for="lastname">Last name</label>
+                <input id="lastnameInput" type="text" name="lastname" required>
+                <div class="lastname error"></div>
+            </div>
+        </li>
+    </ul>
 
-<form>
+    <div class="emailS">
+        <label for="email">Email</label>
+        <input type="text" name="email" required>
+        <div class="email error"></div>
+    </div>
 
-    <label for="firstname">First name</label>
-    <input type="text" name="firstname" required>
-    <div class="firstname error"></div>
+    <div class="gitHubS">
+        <label for="gitHub">GitHub</label>
+        <input type="text" name="gitHub">
+        <div class="gitHub error"></div>
+    </div>
 
-    <label for="lastname">Last name</label>
-    <input type="text" name="lastname" required>
-    <div class="lastname error"></div>
+    <div class="passwordS">
+        <label for="password">Password</label>
+        <input type="password" name="password" required>
+        <div class="password error"></div>
+    </div>
 
-    <label for="email">Email</label>
-    <input type="text" name="email" required>
-    <div class="email error"></div>
+    <div class="repeatPasswordS">
+        <label for="repeatPassword">Confirm password</label>
+        <input type="password" name="repeatPassword" required>
+        <div class="repeatPassword error"></div>
+    </div>
 
-    <label for="gitHub">GitHub</label>
-    <input type="text" name="gitHub">
-    <div class="gitHub error"></div>
-
-    <label for="password">Password</label>
-    <input type="password" name="password" required>
-    <div class="password error"></div>
-
-    <label for="repeatPassword">Confirm password</label>
-    <input type="password" name="repeatPassword" required>
-    <div class="repeatPassword error"></div>
-
-    <button>Sign up</button>
-</form>
+        <button>Register</button>
+        <p>Already registered ? <a id="already" href="/login">Login</a></p>
+    </form>
+</div>
+</div>
 
 <script>
     const form = document.querySelector('form');

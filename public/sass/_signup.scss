@@ -1,0 +1,84 @@
+.containerSignup{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signupImage{
+    width: 40%;
+    height: 10px;
+}
+
+.formSignup{
+    margin-left: 60%;
+    width: 25%;
+    font-weight: 500;
+
+    h1{
+        margin-top: 40px;
+        width: 100%;
+        font-weight: 700;
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    ul{
+        display: flex;
+    }
+
+    label {
+        text-align: left;
+        width: 100%;
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    input{
+        width: 100%;
+    }
+
+    #firstnameInput, #lastnameInput{
+        width: 80%;
+    }
+
+    .lastnameS {
+        text-align: right;
+
+        label {
+            padding-left: 33px;
+        }
+    }
+
+    button {
+        transform: translateX(120%);
+        margin-top: 30px;
+        padding: 10px 20px;
+        border-radius: 8px;
+        background-color: #e08785;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        transition: background-color 1s ease;
+    }
+
+    button:hover{
+        background-color: #d65856;
+    }
+
+    p {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    #already {
+        color: #e08785;
+        transition: color 0.5s ease;
+    }
+
+    #already:hover {
+        color: #d65856;
+    }
+
+}
