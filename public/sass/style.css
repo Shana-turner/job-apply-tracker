@@ -66,17 +66,14 @@ hr {
 
 .containerSignup {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
-
-.signupImage {
-  width: 40%;
-  height: 10px;
+.containerSignup .signupImage {
+  margin-left: 20%;
 }
 
 .formSignup {
-  margin-left: 60%;
+  margin-left: 10%;
   width: 25%;
   font-weight: 500;
 }
@@ -100,6 +97,9 @@ hr {
 }
 .formSignup input {
   width: 100%;
+  border-radius: 10px;
+  background-color: rgb(245, 246, 247);
+  border: 1px #E1B3B2 solid;
 }
 .formSignup #firstnameInput, .formSignup #lastnameInput {
   width: 80%;
@@ -110,11 +110,11 @@ hr {
 .formSignup .lastnameS label {
   padding-left: 33px;
 }
-.formSignup button {
-  transform: translateX(120%);
+.formSignup #buttonS {
+  transform: translateX(90%);
   margin-top: 30px;
   padding: 10px 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   background-color: #e08785;
   border: none;
   cursor: pointer;
@@ -134,4 +134,51 @@ hr {
 }
 .formSignup #already:hover {
   color: #d65856;
+}
+
+.containerLogin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formLogin {
+  margin-left: 38%;
+  width: 25%;
+  font-weight: 500;
+}
+.formLogin h1 {
+  margin-top: 40px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.formLogin label {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.formLogin input {
+  width: 100%;
+  border-radius: 10px;
+  background-color: rgb(245, 246, 247);
+  border: 1px #E1B3B2 solid;
+}
+.formLogin #buttonL {
+  transform: translateX(120%);
+  margin-top: 30px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #e08785;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 1s ease;
+}
+.formLogin button:hover {
+  background-color: #d65856;
 }/*# sourceMappingURL=style.css.map */

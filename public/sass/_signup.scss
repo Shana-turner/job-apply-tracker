@@ -1,16 +1,14 @@
 .containerSignup{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-}
 
-.signupImage{
-    width: 40%;
-    height: 10px;
+    .signupImage{
+        margin-left: 20%;
+    }
 }
 
 .formSignup{
-    margin-left: 60%;
+    margin-left: 10%;
     width: 25%;
     font-weight: 500;
 
@@ -37,6 +35,9 @@
 
     input{
         width: 100%;
+        border-radius: 10px;
+        background-color: rgb(245, 246, 247);
+        border: 1px #E1B3B2 solid;
     }
 
     #firstnameInput, #lastnameInput{
@@ -51,11 +52,11 @@
         }
     }
 
-    button {
-        transform: translateX(120%);
+    #buttonS {
+        transform: translateX(90%);
         margin-top: 30px;
         padding: 10px 20px;
-        border-radius: 8px;
+        border-radius: 10px;
         background-color: #e08785;
         border: none;
         cursor: pointer;

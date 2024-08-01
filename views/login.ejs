@@ -1,16 +1,27 @@
 <%- include('partials/headerLS'); -%>
 
-    <form>
-        <h2>Login</h2>
-        <label for="email">Email</label>
-        <input type="text" name="email" required>
-        <div class="email error"></div>
-        <label for="password">Password</label>
-        <input type="password" name="password" required>
-        <div class="password error"></div>
-        <button>Login</button>
-    </form>
-    <!-- Tu peux supprimer tout ce que tu veux sauf le script -->
+    <div class="containerLogin">
+    <div class="formLogin">
+        <h1>Login</h1>
+        <form>
+
+        <div class="emailS">
+            <label for="email">Email</label>
+            <input type="text" name="email" required>
+            <div class="email error"></div>
+        </div>
+
+        <div class="passwordS">
+            <label for="password">Password</label>
+            <input type="password" name="password" required>
+            <div class="password error"></div>
+        </div>
+
+            <button id="buttonL">Login</button>
+        </form>
+    </div>
+    </div>
+
     <script>
         const form = document.querySelector('form');
         const emailError = document.querySelector('.email.error')
