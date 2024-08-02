@@ -104,7 +104,7 @@ hr {
 }
 .header2 li a {
   color: white;
-  transition: color 1s ease-in-out;
+  transition: color 0.5s ease;
 }
 .header2 li a:hover {
   color: black;
@@ -128,7 +128,10 @@ hr {
   align-items: center;
 }
 .containerSignup .signupImage {
-  margin-left: 20%;
+  margin-left: 17.5%;
+  width: 250px;
+  filter: invert(66%) sepia(34%) saturate(736%) hue-rotate(312deg) brightness(91%) contrast(91%);
+  transition: filter 1s ease;
 }
 
 .formSignup {
@@ -181,7 +184,7 @@ hr {
   font-weight: 700;
   transition: background-color 1s ease;
 }
-.formSignup button:hover {
+.formSignup #buttonS:hover {
   background-color: #d65856;
 }
 .formSignup p {
