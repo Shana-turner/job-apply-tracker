@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Job = require('../models/job');
 const jwt = require('jsonwebtoken');
 
 
@@ -52,6 +53,8 @@ module.exports.login_get = (req, res)=>{
     res.render('login');
 }
 
+
+
 module.exports.signup_post = async (req, res)=>{
     const { firstname, lastname, email, gitHub, password, repeatPassword  } = req.body;
 
@@ -77,6 +80,40 @@ module.exports.login_post = async (req, res)=>{
     } catch (error) {
         const errors = handleErrors(error);
         res.status(400).json({});
+    }
+}
+
+
+module.exports.createJob_post = async (req, res)=>{
+
+    try {
+        const { jobTitle, webSite, name, email, phone, address, origin, status, comments } = req.body;
+        const user = await User.login(email);
+        const token = createToken(user._id);
+        res.cookie('jwt', token, {httpOnly : true, maxAge: maxAge*1000});
+        const userr = req.user;
+
+        const job = await Job.create({jobTitle, webSite, name, email, phone, address, origin, status, comments, userr});
+        res.status(201).json(job);
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+    
+}
+
+module.exports.createJob_get = async(req, res)=>{
+
+    try {
+        const user = await User.login(email);
+        const token = createToken(user._id);
+        res.cookie('jwt', token, {httpOnly : true, maxAge: maxAge*1000});
+        const userId = req.user._id;
+
+        const jobs = await Job.find({userr : userId}).populate('userr', 'jobTitle webSite name email phone address origin status comments');
+        res.status(200).json({jobs});
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
 }
 
