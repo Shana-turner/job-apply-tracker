@@ -9,17 +9,23 @@
 </head>
 <body>
     <header>
-        <div class="header">
-            <h1>Logo</h1>
-            <ul>
-                <% if (user) { %>
-                <li>Welcome, <%= user.firstname %></li>
-                <li><a href="/profil">My profile</a></li>
-                <li><a href="/logout">Logout</a></li>
-                <% } else { %>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/signup">Signup</a></li>
-                <% } %>
-            </ul>
+        <div class="header2">
+            <div class="logo">
+                <h1 id="logo2"><a href="/">Job <span>Tracker</a></span></h1>
+            </div>
+            <div class="menu">
+                <ul>
+                    <% if (user) { %>
+                    <li id="username"><%= user.firstname %></li>
+                    <a href="/profil"><img id="miniPic" src="images/profilepic.png" alt="profilepic"></a>
+                    <li><a href="/profil">My profile</a></li>
+                    <li class="liRight"><a href="/logout">Logout</a></li>
+                    <% } else { %>
+                    <li><a href="/login">Login</a></li>
+                    <li class="liRight"><a href="/signup">Signup</a></li>
+                    <% } %>
+                </ul>
+            </div>
         </div>
     </header>
+<hr>

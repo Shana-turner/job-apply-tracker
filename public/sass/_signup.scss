@@ -3,7 +3,10 @@
     align-items: center;
 
     .signupImage{
-        margin-left: 20%;
+        margin-left: 17.5%;
+        width: 250px;
+        filter: invert(66%) sepia(34%) saturate(736%) hue-rotate(312deg) brightness(91%) contrast(91%);
+        transition: filter 1s ease;
     }
 }
 
@@ -65,7 +68,7 @@
         transition: background-color 1s ease;
     }
 
-    button:hover{
+    #buttonS:hover{
         background-color: #d65856;
     }
 

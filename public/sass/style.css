@@ -38,25 +38,84 @@ body {
   height: 80px;
   background-color: #E1B3B2;
 }
-.header h1 {
+.header #logo {
   text-align: center;
   padding-top: 20px;
   font-family: "Luckiest Guy", cursive;
   font-weight: 400;
   font-size: 40px;
 }
-.header h1 a {
+.header #logo a {
   color: white;
   transition: color 1s ease-in-out;
 }
-.header h1 span {
+.header #logo span {
   color: black;
   transition: color 1s ease-in-out;
 }
-.header h1:hover a {
+.header #logo:hover a {
   color: black;
 }
-.header h1:hover span {
+.header #logo:hover span {
+  color: white;
+}
+
+hr {
+  border: 2px solid black;
+}
+
+.header2 {
+  width: 100%;
+  height: 80px;
+  background-color: #E1B3B2;
+  display: flex;
+  justify-content: space-between;
+}
+.header2 #logo2 {
+  margin-left: 100px;
+  padding-top: 20px;
+  font-family: "Luckiest Guy", cursive;
+  font-weight: 400;
+  font-size: 40px;
+}
+.header2 #logo2 a {
+  color: white;
+  transition: color 1s ease-in-out;
+}
+.header2 #logo2 span {
+  color: black;
+  transition: color 1s ease-in-out;
+}
+.header2 #miniPic {
+  width: 60px;
+  position: absolute;
+  top: 10px;
+  right: 295px;
+}
+.header2 #username {
+  font-weight: 700;
+  margin-right: 100px;
+}
+.header2 li {
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 20px;
+  margin-top: 30px;
+}
+.header2 li a {
+  color: white;
+  transition: color 0.5s ease;
+}
+.header2 li a:hover {
+  color: black;
+}
+.header2 .liRight {
+  margin-right: 100px;
+}
+.header2 #logo2:hover a {
+  color: black;
+}
+.header2 #logo2:hover span {
   color: white;
 }
 
@@ -69,7 +128,10 @@ hr {
   align-items: center;
 }
 .containerSignup .signupImage {
-  margin-left: 20%;
+  margin-left: 17.5%;
+  width: 250px;
+  filter: invert(66%) sepia(34%) saturate(736%) hue-rotate(312deg) brightness(91%) contrast(91%);
+  transition: filter 1s ease;
 }
 
 .formSignup {
@@ -122,7 +184,7 @@ hr {
   font-weight: 700;
   transition: background-color 1s ease;
 }
-.formSignup button:hover {
+.formSignup #buttonS:hover {
   background-color: #d65856;
 }
 .formSignup p {
@@ -181,6 +243,38 @@ hr {
   font-weight: 700;
   transition: background-color 1s ease;
 }
-.formLogin button:hover {
+.formLogin #buttonL:hover {
   background-color: #d65856;
+}
+
+.profileContainer h1 {
+  margin-top: 50px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.profileContainer .profileGrid {
+  display: grid;
+  grid-template: 1fr 1fr 1fr 1fr 1fr/200px 100px 300px;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+  justify-content: center;
+  margin-top: 60px;
+}
+.profileContainer img {
+  grid-area: 1/1/6/2;
+  grid-gap: 50px;
+}
+.profileContainer .p {
+  padding-left: 20px;
+  font-weight: 700;
+}
+.profileContainer a {
+  color: #E1B3B2;
+  transition: color 0.5 ease;
+}
+.profileContainer a:hover {
+  color: black;
 }/*# sourceMappingURL=style.css.map */

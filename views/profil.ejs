@@ -1,2 +1,14 @@
 <%- include('partials/header'); -%>
 
+<div class="profileContainer">
+    <h1>My profile</h1>
+        <div class="profileGrid">
+            <img src="images/profilepic.png" alt="profile picture">
+            <p class="p">Full name:</p>
+            <p><%= user.firstname %> <%= user.lastname %></p>
+            <p class="p">Email:</p>
+            <p><%= user.email %></p>
+            <p class="p">GitHub:</p>
+            <p><a href="<%= user.gitHub %>"><%= user.gitHub %></a></p>
+        </div>
+</div>
