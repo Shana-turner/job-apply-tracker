@@ -100,6 +100,7 @@ hr {
   border-radius: 10px;
   background-color: rgb(245, 246, 247);
   border: 1px #E1B3B2 solid;
+  text-align: center;
 }
 .formSignup #firstnameInput, .formSignup #lastnameInput {
   width: 80%;
@@ -167,6 +168,7 @@ hr {
   border-radius: 10px;
   background-color: rgb(245, 246, 247);
   border: 1px #E1B3B2 solid;
+  text-align: center;
 }
 .formLogin #buttonL {
   transform: translateX(120%);
