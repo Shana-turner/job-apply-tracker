@@ -1,2 +1,65 @@
 <%- include('partials/header'); -%>
 
+<form>
+    <label for="jobTitle">Job title</label>
+        <input type="text" id="jobTitle" name="jobTitle" required>
+    <label for="webSite">Website</label>
+        <input type="text" id="webSite" name="webSite" required>
+    <fieldset>
+        <legend>Employer’s contact</legend>
+        <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        <label for="email">Email of contact</label>
+            <input type="email" id="email" name="email" required>
+        <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required>
+        <label for="address">Address</label>
+            <input type="text" id="address" name="address" required>
+    </fieldset>
+    <div class="origin">
+        <label for="origin">Origin</label>
+        <textarea name="origin" id="origin" cols="65" rows="5"></textarea>
+    
+    </div>
+    <div class="status">
+        <label for="status">Status</label>
+        <textarea name="status" id="status" cols="65" rows="5"></textarea>
+    </div>
+    <label for="comments">Comments</label>
+        <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+    <button>Save</button>
+</form>
+
+<script>
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', async(e) =>{
+        e.preventDefault();
+        //Get values
+        const jobTitle = form.jobTitle.value;
+        const webSite = form.webSite.value;
+        const name = form.name.value;
+        const email = form.email.value;
+        const phone = form.phone.value;
+        const address = form.address.value;
+        const origin = form.origin.value;
+        const status = form.status.value;
+        const comments = form.comments.value;
+
+        try {
+            const res = await fetch('/createJob', {
+                method : 'POST',
+                body : JSON.stringify({jobTitle, webSite, name, email, phone, address, origin, status, comments}),
+                headers : {'Content-Type' : 'application/json'}
+            })
+            const data = await res.json();
+            console.log(data);
+            if(data.job){
+                location.assign('/');
+
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    })
+</script>

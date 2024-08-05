@@ -88,14 +88,10 @@ module.exports.createJob_post = async (req, res)=>{
 
     try {
         const { jobTitle, webSite, name, email, phone, address, origin, status, comments } = req.body;
-        const user = await User.login(email);
-        const token = createToken(user._id);
-        res.cookie('jwt', token, {httpOnly : true, maxAge: maxAge*1000});
-        const userr = req.user;
+        const user = req.user.id;
 
-        const job = await Job.create({jobTitle, webSite, name, email, phone, address, origin, status, comments, userr});
-        res.status(201).json(job);
-
+        await Job.create({jobTitle, webSite, name, email, phone, address, origin, status, comments, user});
+        
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -105,12 +101,7 @@ module.exports.createJob_post = async (req, res)=>{
 module.exports.createJob_get = async(req, res)=>{
 
     try {
-        const user = await User.login(email);
-        const token = createToken(user._id);
-        res.cookie('jwt', token, {httpOnly : true, maxAge: maxAge*1000});
-        const userId = req.user._id;
-
-        const jobs = await Job.find({userr : userId}).populate('userr', 'jobTitle webSite name email phone address origin status comments');
+        const jobs = await Job.find({user : req.user.id}).populate('user', 'jobTitle webSite name email phone address origin status ');
         res.status(200).json({jobs});
     } catch (err) {
         res.status(500).json({ error: err.message });
