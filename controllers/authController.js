@@ -1,5 +1,4 @@
 const User = require('../models/user');
-const Job = require('../models/job');
 const jwt = require('jsonwebtoken');
 
 
@@ -84,29 +83,7 @@ module.exports.login_post = async (req, res)=>{
 }
 
 
-module.exports.createJob_post = async (req, res)=>{
 
-    try {
-        const { jobTitle, webSite, name, email, phone, address, origin, status, comments } = req.body;
-        const user = req.user.id;
-
-        await Job.create({jobTitle, webSite, name, email, phone, address, origin, status, comments, user});
-        
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-    
-}
-
-module.exports.createJob_get = async(req, res)=>{
-
-    try {
-        const jobs = await Job.find({user : req.user.id}).populate('user', 'jobTitle webSite name email phone address origin status ');
-        res.status(200).json({jobs});
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-}
 
 module.exports.logout_get = (req, res)=>{
     res.cookie('jwt', '', {maxAge : 1});

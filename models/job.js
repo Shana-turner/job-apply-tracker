@@ -42,6 +42,15 @@ const jobSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         required : true,
         ref : 'User'
+    },
+    createdAt: {
+        type: Date,
+        immutable: true,
+        default: () => Date.now(),
+    },
+    updatedAt: {
+        type: Date,
+        default: () => Date.now(),
     }
 });
 

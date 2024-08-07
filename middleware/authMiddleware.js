@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
+
 const requireAuth = (req, res, next) =>{
     const token = req.cookies.jwt;
 
@@ -36,6 +37,7 @@ const checkUser = (req, res, next) =>{
                 let user = await User.findById(decodedToekn.id);
                 res.locals.user = user;
                 req.user = decodedToekn;
+    
                 next();
             }
         });

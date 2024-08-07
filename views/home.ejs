@@ -1,2 +1,29 @@
 <%- include('partials/header'); -%>
 
+
+<ul id="jobsList"></ul>
+
+<script>
+
+        fetch('/home', {
+            method: 'GET'
+        })
+        .then(response => response.json())
+        .then(data => {
+            const jobsList = document.getElementById('jobsList');
+            data.jobs.forEach(job => {
+                const listItem = document.createElement('li');
+                listItem.classList.add("jobDetail");
+                listItem.innerHTML = `<h2 style="cursor:pointer;">${job.jobTitle}</h2><p>${job.webSite}</p>`;
+                listItem.addEventListener('click', ()=>{
+                    window.location.href = `/job/${job._id}`;
+                }); 
+                jobsList.appendChild(listItem);
+                
+            });
+
+            
+        })
+        .catch(error => console.error('Error:', error));
+    </script>
+
