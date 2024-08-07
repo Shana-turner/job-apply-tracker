@@ -1,7 +1,19 @@
 <%- include('partials/header'); -%>
 
+<% if (user) { %>
+<h1>Dashboard</h1>
+<a href="/createJob">Create new job</a>
+
+<!-- <label for="filter">Filter by </label>
+        <select name="filter" id="filter">
+            <option value="">Select an origin</option>
+            <option value="Candidature spontanée">Candidature spontanée</option>
+            
+        </select> -->
 
 <ul id="jobsList"></ul>
+
+<% } %>
 
 <script>
 

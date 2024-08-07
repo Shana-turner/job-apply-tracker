@@ -59,3 +59,22 @@ module.exports.updateJob = async (req,res)=>{
     }
     
 }
+
+module.exports.deleteJob = async (req, res)=>{
+    try {
+        const idJob = req.params.id;
+        const userId = req.user.id;
+
+        const deleteJob = await Job.findByIdAndDelete({ _id : idJob, user : userId});
+        if(!deleteJob) {
+            return res.status(404).json({ error: 'Post not found or not authorized to delete' });
+        }
+        res.json(deleteJob);
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+    
+
+
+}
