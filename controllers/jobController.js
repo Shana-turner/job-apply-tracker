@@ -43,9 +43,10 @@ module.exports.getJobById = async (req, res) => {
 module.exports.updateJob = async (req,res)=>{
     try {
         const jobId = req.params.id;
+        const userId = req.user.id;
         const { jobTitle, webSite, name, email, phone, address, origin, status, comments } = req.body;
     
-        const updateJob = await Job.updateOne({_id : jobId},{jobTitle, webSite, name, email, phone, address, origin, status, comments});
+        const updateJob = await Job.updateOne({_id : jobId, user : userId},{jobTitle, webSite, name, email, phone, address, origin, status, comments});
 
         if (updateJob.nModified === 0) {
             res.status(404).json({ message: 'Article non trouvé ou non autorisé' });

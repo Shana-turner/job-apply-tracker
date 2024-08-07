@@ -1,14 +1,103 @@
 <%- include('partials/header'); -%>
 
+
+
 <div id="jobDetails">
-    <h1> <%=job.jobTitle%> </h1>
-    <p><%=job.webSite%></p>
-    <p><%=job.name%></p>
-    <p><%=job.email%></p>
-    <p><%=job.phone%></p>
-    <p><%=job.address%></p>
-    <p><%=job.origin%></p>
-    <p><%=job.status%></p>
-    <p><%=job.comments%></p>
+    <h1> Job title : <%=job.jobTitle%> </h1>
+    <p>Web site : <%=job.webSite%></p>
+    <p>Name of employer :<%=job.name%></p>
+    <p>Email of employer :<%=job.email%></p>
+    <p>Phone of employer : <%=job.phone%></p>
+    <p>Adress of company :<%=job.address%></p>
+    <p>Origin : <%=job.origin%></p>
+    <p>Status : <%=job.status%></p>
+    <p>Comments : <%=job.comments%></p>
+    <button class="updatebtn">Update</button>
 </div>
+
+<script>
+    const updateBtn = document.querySelector('.updatebtn');
+    updateBtn.addEventListener("click", ()=>{
+        const jobDetail = document.getElementById('jobDetails');
+        jobDetail.innerHTML = 
+        `<form>
+            <input type="hidden" id="jobId" value="<%=job._id%>">
+    <label for="jobTitle">Job title</label>
+        <input type="text" id="jobTitle" name="jobTitle" required value="<%=job.jobTitle%>">
+    <label for="webSite">Web site</label>
+        <input type="text" id="webSite" name="webSite" required value="<%=job.webSite%>">
+    <fieldset>
+        <label for="name">Name of employer</label>
+            <input type="text" id="name" name="name" required value="<%=job.name%>">
+        <label for="email">Email of employer</label>
+            <input type="email" id="email" name="email" required value="<%=job.email%>">
+        <label for="phone">Phone of employer</label>
+            <input type="tel" id="phone" name="phone" required value="<%=job.phone%>">
+        <label for="address">Adress of company</label>
+            <input type="text" id="address" name="address" required value="<%=job.address%>">
+    </fieldset>
+    <div class="origin">
+        <label for="origin">Origin</label>
+        <select name="origin" id="origin">
+            <option value="<%=job.origin%>"><%=job.origin%></option>
+            <option value="Candidature spontanée">Candidature spontanée</option>
+            <option value="Job offer">Job offer</option>
+        </select>
+    </div>
+    <div class="status">
+        <label for="status">Status</label>
+        <select name="status" id="status">
+            <option value="<%=job.status%>"><%=job.status%></option>
+            <option value="Interested">Interested</option>
+            <option value="CV sent">CV sent</option>
+            <option value="Negative">Negative</option>
+            <option value="Interview">Interview</option>
+        </select>
+    </div>
+    <label for="comments">Comments</label>
+        <textarea name="comments" id="comments" cols="30" rows="5"> <%=job.comments%></textarea>
+    <button class="update">Update</button>
+</form>`;
+    
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', async(e) =>{
+        console.log('form fonctionne');
+        e.preventDefault();
+        const jobTitle = form.jobTitle.value;
+        const webSite = form.webSite.value;
+        const name = form.name.value;
+        const email = form.email.value;
+        const phone = form.phone.value;
+        const address = form.address.value;
+        const origin = form.origin.value;
+        const status = form.status.value;
+        const comments = form.comments.value;
+        const jobId = document.getElementById('jobId').value;
+
+        try {
+            
+            const res = await fetch('/job/' + jobId, {
+                method : 'PUT',
+                body : JSON.stringify({jobTitle, webSite, name, email, phone, address, origin, status, comments}),
+                headers : {'Content-Type' : 'application/json'}
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.error) {
+                    console.error('Error:', data.error);
+                } else {
+                    location.assign('/job/' + jobId);
+                }
+            })
+            
+        } 
+        catch (error) {
+            console.log(error);
+        }
+
+    })
+    
+    })
+</script>
 

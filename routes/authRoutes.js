@@ -14,8 +14,7 @@ router.get("/logout", authController.logout_get);
 router.post("/createJob",requireAuth, checkUser, jobController.createJob_post);
 router.get("/home", requireAuth, checkUser, jobController.getUserJob);
 router.get('/job/:id',requireAuth, checkUser, jobController.getJobById);
-
-//router.put("/home/:id", requireAuth,checkUser,jobController.updateJob);
+router.put("/job/:id", requireAuth,checkUser,jobController.updateJob);
 
 
 module.exports = router;
