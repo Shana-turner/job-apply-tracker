@@ -4,7 +4,7 @@
     <img src="images/right-to-bracket-solid.svg" alt="pink stuff" class="signupImage">
 <div class="formSignup">
     <h1>Sign up</h1>
-    <form>
+    <form action="/signup" method="POST" enctype="multipart/form-data">
     <ul>
         <li>
             <div class="firstnameS">
@@ -25,27 +25,30 @@
 
     <div class="emailS">
         <label for="email">Email</label>
-        <input type="text" name="email" required>
+        <input type="text" name="email" id="email" required>
         <div class="email error"></div>
     </div>
 
     <div class="gitHubS">
         <label for="gitHub">GitHub</label>
-        <input type="text" name="gitHub">
+        <input type="text" name="gitHub" id="gitHub">
         <div class="gitHub error"></div>
     </div>
 
     <div class="passwordS">
         <label for="password">Password</label>
-        <input type="password" name="password" required>
+        <input type="password" name="password" required id="password">
         <div class="password error"></div>
     </div>
 
     <div class="repeatPasswordS">
         <label for="repeatPassword">Confirm password</label>
-        <input type="password" name="repeatPassword" required>
+        <input type="password" name="repeatPassword" required id="repeatPassword">
         <div class="repeatPassword error"></div>
     </div>
+
+    <input type="file" name="profileImage" accept="image/*" required>
+    <input type="file" name="cv" accept="application/pdf" required>
 
         <button id="buttonS">Register</button>
         <p>Already registered ? <a id="already" href="/login">Login</a></p>
@@ -62,21 +65,16 @@
         e.preventDefault();
 
         // Reset values
-        emailError.textContent = ''
-        passwordError.textContent = ''
+        emailError.textContent = '';
+        passwordError.textContent = '';
 
-        // Get values
-        const firstname = form.firstname.value;
-        const lastname = form.lastname.value;
-        const email = form.email.value;
-        const gitHub = form.gitHub.value;
-        const password = form.password.value;
+        const formData = new FormData(form);
+
 
         try{
             const res = await fetch('/signup', {
                 method: 'POST',
-                body: JSON.stringify({ firstname, lastname, email, gitHub, password }),
-                headers: { 'Content-Type': 'application/json' }
+                body: formData,
             })
             const data = await res.json()
             console.log(data)

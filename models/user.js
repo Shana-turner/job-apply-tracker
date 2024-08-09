@@ -31,7 +31,13 @@ const userSchema = new mongoose.Schema({
         type : String,
         required: [true, 'Please enter a password'],
         minLength: [6, "Minimum password length is 6 characters"]
-    }
+    },
+    profileImageUrl : {
+        type: String
+    }, 
+    cvUrl :{
+        type: String
+    },
 });
 
 //fire a function after doc saved to db

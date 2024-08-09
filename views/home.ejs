@@ -4,19 +4,31 @@
 <h1>Dashboard</h1>
 <a href="/createJob">Create new job</a>
 
-<!-- <label for="filter">Filter by </label>
-        <select name="filter" id="filter">
-            <option value="">Select an origin</option>
-            <option value="Candidature spontanée">Candidature spontanée</option>
-            
-        </select> -->
+<label for="statusFilter">Filter by </label>
+        <select name="statusFilter" id="statusFilter">
+            <option value="">Select a status</option>
+            <option value="Interested" id="interested">Interested</option>
+            <option value="CV sent" id="cv">CV sent</option>
+            <option value="Negative" id="negative">Negative</option>
+            <option value="Interview" id="interview">Interview</option>
+        </select> 
+<label for="order">Order by </label>
+        <select name="order" id="order">
+            <option value="">Select an order</option>
+            <option value="asc">Ascendant</option>
+            <option value="desc">Descendant</option>
+
+        </select> 
 
 <ul id="jobsList"></ul>
 
 <% } %>
 
 <script>
-
+        const interested = document.getElementById('interested').value;
+        const cv = document.getElementById('cv').value;
+        const negative = document.getElementById('negative').value;
+        const interview = document.getElementById('interview').value;
         fetch('/home', {
             method: 'GET'
         })
@@ -26,10 +38,7 @@
             data.jobs.forEach(job => {
                 const listItem = document.createElement('li');
                 listItem.classList.add("jobDetail");
-                listItem.innerHTML = `<h2 style="cursor:pointer;">${job.jobTitle}</h2><p>${job.webSite}</p>`;
-                listItem.addEventListener('click', ()=>{
-                    window.location.href = `/job/${job._id}`;
-                }); 
+                listItem.innerHTML = `<h2 ">${job.jobTitle}</h2><p>${job.webSite}</p><a href="/job/${job._id}">See more</a>`;
                 jobsList.appendChild(listItem);
                 
             });
@@ -37,6 +46,9 @@
             
         })
         .catch(error => console.error('Error:', error));
+
+        
+
+        
     </script>
 
- 

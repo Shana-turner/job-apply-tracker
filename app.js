@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
@@ -10,6 +12,7 @@ const app = express();
 //middleware
 app.use(express.static('public'));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 //view engine
@@ -32,6 +35,7 @@ app.get('/', (req, res)=> res.render('home'));
 app.get('/profil', requireAuth, (req, res) => res.render('profil'));
 app.get('/createJob', requireAuth, (req, res)=> res.render('createJob') );
 app.use(authRoutes);
+
 
 
 

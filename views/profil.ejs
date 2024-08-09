@@ -3,13 +3,25 @@
 <div class="profileContainer">
     <h1>My profile</h1>
         <div class="profileGrid">
-            <img src="images/profilepic.png" alt="profile picture">
+            <img src="<%= user.profileImageUrl %>" alt="Profile Image" style="width: 150px; height: auto;">
             <p class="p">Full name:</p>
             <p><%= user.firstname %> <%= user.lastname %></p>
             <p class="p">Email:</p>
             <p><%= user.email %></p>
             <p class="p">GitHub:</p>
             <p><a href="<%= user.gitHub %>"><%= user.gitHub %></a></p>
+
+            <div>
+                <a href="<%= user.cvUrl %>" download="cv.pdf" target="_blank">
+                    <button>Download CV</button>
+                </a>
+                <form action="/profil/update-cv" method="POST" enctype="multipart/form-data">
+                    <label for="cv">Upload new CV:</label>
+                    <input type="file" name="cv" id="cv" accept="application/pdf" required>
+                    <button type="submit">Upload new CV</button>
+                </form>
+            </div>
+
             <button class="btnpassword">Change password</button>
         </div>
         
